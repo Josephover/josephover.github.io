@@ -4,394 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joseph André Sánchez | Full Stack Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #0f172a;
-            --secondary-color: #1e293b;
-            --accent-color: #3b82f6;
-            --accent-dark: #1e40af;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --border-color: #334155;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navegación */
-        nav {
-            background: rgba(15, 23, 42, 0.95);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent-color), #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            color: var(--accent-color);
-            margin-bottom: 2rem;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        /* Secciones */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--accent-color);
-        }
-
-        /* About */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .about-text ul {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-
-        .about-text li {
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            position: relative;
-            color: var(--text-secondary);
-        }
-
-        .about-text li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: rgba(30, 41, 59, 0.8);
-            padding: 2rem;
-            border-radius: 0.75rem;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px rgba(59, 130, 246, 0.1);
-        }
-
-        .skill-card h3 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-card ul {
-            list-style: none;
-        }
-
-        .skill-card li {
-            padding: 0.5rem 0;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-        }
-
-        .skill-card li:before {
-            content: "✓";
-            margin-right: 0.75rem;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        /* Proyectos */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.75rem;
-            font-size: 1.3rem;
-        }
-
-        .project-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--accent-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--accent-color);
-            border-radius: 0.25rem;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .project-links a:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        /* Contact */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(59, 130, 246, 0.2);
-            border-radius: 50%;
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.3rem;
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(15, 23, 42, 0.95);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/skill-icons@latest/icons/index.min.css" />
 </head>
 <body>
     <!-- Navegación -->
@@ -458,41 +72,41 @@
             <div class="skill-card">
                 <h3>🎨 Frontend</h3>
                 <ul>
-                    <li>HTML5 & CSS3</li>
-                    <li>JavaScript (ES6+)</li>
-                    <li>React.js</li>
-                    <li>Responsive Design</li>
-                    <li>Tailwind CSS</li>
+                    <li><i class="si si-html5"></i>HTML5 & CSS3</li>
+                    <li><i class="si si-javascript"></i>JavaScript (ES6+)</li>
+                    <li><i class="si si-react"></i>React.js</li>
+                    <li><i class="si si-tailwindcss"></i>Responsive Design</li>
+                    <li><i class="si si-tailwindcss"></i>Tailwind CSS</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <h3>⚙️ Backend & Languages</h3>
                 <ul>
-                    <li>Node.js & Express</li>
-                    <li>Python</li>
-                    <li>Java</li>
-                    <li>SQL & NoSQL</li>
-                    <li>REST APIs</li>
+                    <li><i class="si si-nodejs"></i>Node.js & Express</li>
+                    <li><i class="si si-python"></i>Python</li>
+                    <li><i class="si si-java"></i>Java</li>
+                    <li><i class="si si-mysql"></i>SQL & NoSQL</li>
+                    <li><i class="si si-fastapi"></i>REST APIs</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <h3>🗄️ Bases de Datos & DevOps</h3>
                 <ul>
-                    <li>MySQL & PostgreSQL</li>
-                    <li>MongoDB</li>
-                    <li>Git & GitHub</li>
-                    <li>Docker (Básico)</li>
-                    <li>Linux</li>
+                    <li><i class="si si-mysql"></i>MySQL & PostgreSQL</li>
+                    <li><i class="si si-mongodb"></i>MongoDB</li>
+                    <li><i class="si si-git"></i>Git & GitHub</li>
+                    <li><i class="si si-docker"></i>Docker (Básico)</li>
+                    <li><i class="si si-linux"></i>Linux</li>
                 </ul>
             </div>
             <div class="skill-card">
                 <h3>🛠️ Herramientas & Metodologías</h3>
                 <ul>
-                    <li>Agile/Scrum</li>
-                    <li>VS Code</li>
-                    <li>Postman</li>
-                    <li>Figma (Básico)</li>
-                    <li>Jira/Trello</li>
+                    <li><i class="si si-jira"></i>Agile/Scrum</li>
+                    <li><i class="si si-visualstudiocode"></i>VS Code</li>
+                    <li><i class="si si-postman"></i>Postman</li>
+                    <li><i class="si si-figma"></i>Figma (Básico)</li>
+                    <li><i class="si si-jira"></i>Jira/Trello</li>
                 </ul>
             </div>
         </div>
