@@ -2,289 +2,412 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Joseph André Sánchez | Full Stack Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">JAS</div>
-            
-            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú">☰</button>
-            
-            <ul class="nav-links" id="nav-menu">
-                <li><a href="#about">Sobre mí</a></li>
-                <li><a href="#experience">Experiencia</a></li>
-                <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#projects">Proyectos</a></li>
-                <li><a href="#contact">Contacto</a></li>
-                <li>
-                    <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">🌙</button>
-                </li>
+
+    <!-- ============ BOOT SCREEN ============ -->
+    <div id="boot-screen" aria-hidden="true">
+        <pre id="boot-log"></pre>
+        <div class="boot-hint">clic para omitir</div>
+    </div>
+
+    <div class="os" id="os-root">
+
+        <!-- ============ TOP BAR ============ -->
+        <header class="topbar">
+            <div class="tb-group tb-left">
+                <button class="start-btn" id="start-btn" aria-haspopup="true" aria-expanded="false">
+                    <span class="start-glyph">◆</span><span class="start-label">jas@portfolio</span>
+                </button>
+                <nav class="workspaces" aria-label="Espacios de trabajo">
+                    <button class="ws-btn" data-open="about"><span class="ws-num">1</span>about</button>
+                    <button class="ws-btn" data-open="experience"><span class="ws-num">2</span>experience</button>
+                    <button class="ws-btn" data-open="skills"><span class="ws-num">3</span>skills</button>
+                    <button class="ws-btn" data-open="projects"><span class="ws-num">4</span>projects</button>
+                    <button class="ws-btn" data-open="contact"><span class="ws-num">5</span>contact</button>
+                </nav>
+            </div>
+            <div class="tb-group tb-center">
+                <span class="tb-clock" id="tb-clock">--:--</span>
+            </div>
+            <div class="tb-group tb-right">
+                <a class="tb-icon-link" href="https://github.com/Josephover" target="_blank" rel="noopener" title="GitHub">
+                    <i class="devicon-github-original"></i>
+                </a>
+                <button class="tb-icon-btn" id="theme-toggle" aria-label="Cambiar tema">🌙</button>
+            </div>
+        </header>
+
+        <!-- Start menu popover -->
+        <div class="start-menu" id="start-menu" hidden>
+            <div class="start-menu-title">aplicaciones</div>
+            <ul class="start-menu-list">
+                <li><button data-open="about"><span class="dot dot-accent"></span>about.md</button></li>
+                <li><button data-open="experience"><span class="dot dot-accent"></span>experience.log</button></li>
+                <li><button data-open="skills"><span class="dot dot-accent"></span>skills.conf</button></li>
+                <li><button data-open="projects"><span class="dot dot-accent"></span>projects/</button></li>
+                <li><button data-open="contact"><span class="dot dot-accent"></span>contact.sh</button></li>
+                <li><button data-open="terminal"><span class="dot dot-green"></span>terminal</button></li>
             </ul>
+            <div class="start-menu-footer">&copy; 2026 Joseph André Sánchez. Todos los derechos reservados. | Desarrollado con ❤️</div>
         </div>
-    </nav>
 
-    <section class="hero">
-        <canvas id="code-bg"></canvas>
-        
-        <div class="hero-content">
-            <h1>Joseph André Sánchez</h1>
-            <p class="subtitle">Full Stack Developer | Backend & Frontend Specialist</p>
-            <p class="hero-description">Desarrollador de software con experiencia en diseño de APIs RESTful, optimización de bases de datos y seguridad con JWT. Especializado en crear soluciones escalables y eficientes.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Contacto</a>
-                <a href="https://github.com/Josephover" class="btn btn-secondary" target="_blank">Ver GitHub</a>
-            </div>
-        </div>
-    </section>
+        <!-- ============ DESKTOP ============ -->
+        <main class="desktop" id="desktop">
+            <canvas id="code-bg"></canvas>
+            <div class="desktop-vignette"></div>
 
-    <section id="about">
-        <h2>Sobre Mí</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <h3>👨🏻‍💻 Quién Soy</h3>
-                <p>Soy un desarrollador full stack con experiencia en la creación de aplicaciones web escalables y de alto rendimiento. Me especializo en backend robusto con Node.js y Express, frontend moderno con React, y arquitecturas de base de datos optimizadas. Apasionado por escribir código limpio, implementar mejores prácticas de seguridad con JWT, y colaborar en equipos ágiles para entregar soluciones innovadoras.</p>
-                
-                <h3>🎯 Mi Enfoque</h3>
-                <ul>
-                    <li>Backend development con arquitecturas escalables</li>
-                    <li>Frontend moderno y responsive</li>
-                    <li>Seguridad con JWT y RBAC</li>
-                    <li>Optimización de bases de datos</li>
-                    <li>Metodologías Agiles</li>
-                </ul>
+            <div class="desktop-icons" id="desktop-icons">
+                <button class="d-icon" data-open="about">
+                    <span class="d-icon-glyph">📄</span><span class="d-icon-label">about.md</span>
+                </button>
+                <button class="d-icon" data-open="experience">
+                    <span class="d-icon-glyph">📜</span><span class="d-icon-label">experience.log</span>
+                </button>
+                <button class="d-icon" data-open="skills">
+                    <span class="d-icon-glyph">⚙️</span><span class="d-icon-label">skills.conf</span>
+                </button>
+                <button class="d-icon" data-open="projects">
+                    <span class="d-icon-glyph">🗂️</span><span class="d-icon-label">projects/</span>
+                </button>
+                <button class="d-icon" data-open="contact">
+                    <span class="d-icon-glyph">✉️</span><span class="d-icon-label">contact.sh</span>
+                </button>
+                <button class="d-icon" data-open="terminal">
+                    <span class="d-icon-glyph">▶_</span><span class="d-icon-label">terminal</span>
+                </button>
             </div>
-            <div class="about-text">
-                <h3>💡 Experiencia</h3>
-                <ul>
-                    <li>Diseño e implementación de APIs RESTful</li>
-                    <li>Desarrollo full stack con JavaScript/TypeScript</li>
-                    <li>Gestión de bases de datos relacionales y NoSQL</li>
-                    <li>Versionamiento con Git</li>
-                    <li>Trabajo en equipos ágiles (Scrum/Kanban)</li>
-                </ul>
-                
-                <h3>🚀 Actualmente</h3>
-                <p>Buscando oportunidades en empresas donde pueda aportar mi expertise en desarrollo backend y contribuir al crecimiento del equipo técnico.</p>
-            </div>
-        </div>
-    </section>
 
-    <section id="experience">
-        <h2>Experiencia Profesional</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-marker current"></div>
-                <div class="timeline-content">
-                    <div class="timeline-period">Oct 2023 - Actualidad</div>
-                    <h3>🚀 Desarrollador Full Stack Autónomo</h3>
-                    <p class="company">Trabajo Independiente</p>
-                    <ul class="experience-details">
-                        <li>Desarrollo de aplicaciones web escalables y de alto rendimiento</li>
-                        <li>Backend robusto con Node.js, Express y arquitecturas optimizadas</li>
-                        <li>Frontend moderno con React y componentes reutilizables</li>
-                        <li>Implementación de seguridad con JWT y RBAC</li>
-                        <li>Diseño e integración de APIs RESTful</li>
-                        <li>Gestión de bases de datos relacionales y NoSQL</li>
-                    </ul>
+            <!-- ===== WINDOW: ABOUT ===== -->
+            <section class="window" id="win-about" data-win="about">
+                <div class="win-titlebar">
+                    <span class="win-dots"><i data-act="close"></i><i data-act="min"></i><i data-act="max"></i></span>
+                    <span class="win-title">about.md — editor</span>
+                    <span class="win-spacer"></span>
                 </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <div class="timeline-period">Mar 2025 - Ago 2025</div>
-                    <h3>💼 Pasante - Desarrollador Full Stack</h3>
-                    <p class="company">Empresa Pública Metropolitana de Transporte de Pasajeros de Quito (EPMTPQ)</p>
-                    <p class="project-highlight"><strong>Sistema de Mantenimiento de Paradas</strong></p>
-                    <div class="tech-stack">
-                        <span class="tech-badge"><i class="devicon-spring-plain"></i> Spring Boot</span>
-                        <span class="tech-badge"><i class="devicon-react-original"></i> React</span>
-                        <span class="tech-badge"><i class="devicon-react-original"></i> SQL Server</span>
+                <div class="win-body">
+                    <div class="hero-block">
+                        <p class="eyebrow">~/portfolio/about.md</p>
+                        <h1>Joseph André Sánchez</h1>
+                        <p class="subtitle">Full Stack Developer | Backend &amp; Frontend Specialist</p>
+                        <p class="hero-description">Desarrollador de software con experiencia en diseño de APIs RESTful, optimización de bases de datos y seguridad con JWT. Especializado en crear soluciones escalables y eficientes.</p>
+                        <div class="cta-buttons">
+                            <button class="btn btn-primary" data-open="contact">Contacto</button>
+                            <a href="https://github.com/Josephover" class="btn btn-secondary" target="_blank" rel="noopener">Ver GitHub</a>
+                        </div>
                     </div>
-                    <ul class="experience-details">
-                        <li><strong>Backend:</strong> Desarrollo de API REST con Spring Boot</li>
-                        <li><strong>Base de Datos:</strong> Diseño e implementación en SQL Server</li>
-                        <li><strong>Frontend:</strong> Desarrollo de interfaz moderno con React</li>
-                        <li><strong>Refactorización:</strong> Mejora del código frontend y estructura de componentes</li>
-                        <li><strong>Integración de APIs:</strong> Conexión e integración de endpoints al frontend</li>
-                        <li><strong>Control de Acceso:</strong> Implementación de roles (Visitante, Técnico, Administrator)</li>
-                        <li><strong>Testing:</strong> Prueba de APIs y validación de funcionalidades</li>
-                        <li><strong>Documentación:</strong> Informes de QA y documentación del sistema</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="skills">
-        <h2>Habilidades Técnicas</h2>
-        <div class="skills-container">
-            <div class="skill-card">
-                <h3>🎨 Frontend</h3>
-                <ul>
-                    <li><i class="devicon-html5-plain"></i> HTML5 & CSS3</li>
-                    <li><i class="devicon-javascript-plain"></i> JavaScript (ES6+)</li>
-                    <li><i class="devicon-react-original"></i> React.js</li>
-                    <li><i class="devicon-bootstrap-plain"></i> Responsive Design</li>
-                    <li><i class="devicon-tailwindcss-plain"></i> Tailwind CSS</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>⚙️ Backend & Languages</h3>
-                <ul>
-                    <li><i class="devicon-nodejs-plain"></i> Node.js & Express</li>
-                    <li><i class="devicon-python-plain"></i> Python</li>
-                    <li><i class="devicon-java-plain"></i> Java</li>
-                    <li><i class="devicon-mysql-plain"></i> SQL & NoSQL</li>
-                    <li><i class="devicon-express-original"></i> REST APIs</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>🗄️ Bases de Datos & DevOps</h3>
-                <ul>
-                    <li><i class="devicon-mysql-plain"></i> MySQL & PostgreSQL</li>
-                    <li><i class="devicon-mongodb-plain"></i> MongoDB</li>
-                    <li><i class="devicon-git-plain"></i> Git & GitHub</li>
-                    <li><i class="devicon-docker-plain"></i> Docker (Básico)</li>
-                    <li><i class="devicon-linux-plain"></i> Linux</li>
-                </ul>
-            </div>
-            <div class="skill-card">
-                <h3>🛠️ Herramientas & Metodologías</h3>
-                <ul>
-                    <li><i class="devicon-jira-plain"></i> Agile/Scrum</li>
-                    <li><i class="devicon-vscode-plain"></i> VS Code</li>
-                    <li><i class="devicon-postman-plain"></i> Postman</li>
-                    <li><i class="devicon-figma-plain"></i> Figma (Básico)</li>
-                    <li><i class="devicon-jira-plain"></i> Jira/Trello</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+                    <div class="about-content">
+                        <div class="about-text">
+                            <h3>👨🏻‍💻 Quién Soy</h3>
+                            <p>Soy un desarrollador full stack con experiencia en la creación de aplicaciones web escalables y de alto rendimiento. Me especializo en backend robusto con Node.js y Express, frontend moderno con React, y arquitecturas de base de datos optimizadas. Apasionado por escribir código limpio, implementar mejores prácticas de seguridad con JWT, y colaborar en equipos ágiles para entregar soluciones innovadoras.</p>
 
-    <section id="projects">
-        <h2>Proyectos Destacados</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-content">
-                    <h3><i class="devicon-github-original"></i> Product-Admin</h3>
-                    <p>Sistema integral de gestión de inventario de productos. Backend robusto desarrollado con Spring Boot, frontend moderno con Angular, base de datos PostgreSQL. Incluye gestión de productos, inventario, reportes y documentación API con Postman.</p>
-                    <div class="project-tags">
-                        <i class="devicon-spring-plain" title="Spring Boot"></i>
-                        <i class="devicon-angular-plain" title="Angular"></i>
-                        <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephover/product-admin" target="_blank">Repositorio</a>
+                            <h3>🎯 Mi Enfoque</h3>
+                            <ul>
+                                <li>Backend development con arquitecturas escalables</li>
+                                <li>Frontend moderno y responsive</li>
+                                <li>Seguridad con JWT y RBAC</li>
+                                <li>Optimización de bases de datos</li>
+                                <li>Metodologías Agiles</li>
+                            </ul>
+                        </div>
+                        <div class="about-text">
+                            <h3>💡 Experiencia</h3>
+                            <ul>
+                                <li>Diseño e implementación de APIs RESTful</li>
+                                <li>Desarrollo full stack con JavaScript/TypeScript</li>
+                                <li>Gestión de bases de datos relacionales y NoSQL</li>
+                                <li>Versionamiento con Git</li>
+                                <li>Trabajo en equipos ágiles (Scrum/Kanban)</li>
+                            </ul>
+
+                            <h3>🚀 Actualmente</h3>
+                            <p>Buscando oportunidades en empresas donde pueda aportar mi expertise en desarrollo backend y contribuir al crecimiento del equipo técnico.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <h3><i class="devicon-github-original"></i> Password Generator</h3>
-                    <p>Generador de contraseñas moderno y seguro con React y Vite. Crea contraseñas fuertes y aleatorias con opciones personalizables. Incluye indicador de fortaleza en tiempo real, historial de últimas 10 contraseñas, y 100% privado - todo se procesa localmente sin transmitir datos.</p>
-                    <div class="project-tags">
-                        <i class="devicon-react-original" title="React"></i>
-                        <i class="devicon-vitejs-original" title="Vite"></i>
-                        <i class="devicon-tailwindcss-plain" title="Tailwind CSS"></i>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephover/Password-Manager" target="_blank">Repositorio</a>
+            <!-- ===== WINDOW: EXPERIENCE ===== -->
+            <section class="window" id="win-experience" data-win="experience">
+                <div class="win-titlebar">
+                    <span class="win-dots"><i data-act="close"></i><i data-act="min"></i><i data-act="max"></i></span>
+                    <span class="win-title">experience.log — historial</span>
+                    <span class="win-spacer"></span>
+                </div>
+                <div class="win-body">
+                    <p class="eyebrow">~/portfolio/experience.log</p>
+                    <h2>Experiencia Profesional</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker current"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-period">Oct 2023 - Actualidad</div>
+                                <h3>🚀 Desarrollador Full Stack Autónomo</h3>
+                                <p class="company">Trabajo Independiente</p>
+                                <ul class="experience-details">
+                                    <li>Desarrollo de aplicaciones web escalables y de alto rendimiento</li>
+                                    <li>Backend robusto con Node.js, Express y arquitecturas optimizadas</li>
+                                    <li>Frontend moderno con React y componentes reutilizables</li>
+                                    <li>Implementación de seguridad con JWT y RBAC</li>
+                                    <li>Diseño e integración de APIs RESTful</li>
+                                    <li>Gestión de bases de datos relacionales y NoSQL</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-period">Mar 2025 - Ago 2025</div>
+                                <h3>💼 Pasante - Desarrollador Full Stack</h3>
+                                <p class="company">Empresa Pública Metropolitana de Transporte de Pasajeros de Quito (EPMTPQ)</p>
+                                <p class="project-highlight"><strong>Sistema de Mantenimiento de Paradas</strong></p>
+                                <div class="tech-stack">
+                                    <span class="tech-badge"><i class="devicon-spring-plain"></i> Spring Boot</span>
+                                    <span class="tech-badge"><i class="devicon-react-original"></i> React</span>
+                                    <span class="tech-badge"><i class="devicon-react-original"></i> SQL Server</span>
+                                </div>
+                                <ul class="experience-details">
+                                    <li><strong>Backend:</strong> Desarrollo de API REST con Spring Boot</li>
+                                    <li><strong>Base de Datos:</strong> Diseño e implementación en SQL Server</li>
+                                    <li><strong>Frontend:</strong> Desarrollo de interfaz moderno con React</li>
+                                    <li><strong>Refactorización:</strong> Mejora del código frontend y estructura de componentes</li>
+                                    <li><strong>Integración de APIs:</strong> Conexión e integración de endpoints al frontend</li>
+                                    <li><strong>Control de Acceso:</strong> Implementación de roles (Visitante, Técnico, Administrator)</li>
+                                    <li><strong>Testing:</strong> Prueba de APIs y validación de funcionalidades</li>
+                                    <li><strong>Documentación:</strong> Informes de QA y documentación del sistema</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <h3><i class="devicon-github-original"></i> Sistema de Votación Electoral</h3>
-                    <p>Plataforma de votación con módulo admin para generar reportes PDF (votantes, abstenciones, resultados) y módulo votante con acceso por cédula. Responsive y funcional en todas las plataformas. Implementado en el instituto para elecciones del consejo estudiantil.</p>
-                    <div class="project-tags">
-                        <i class="devicon-php-plain" title="PHP"></i>
-                        <i class="devicon-mysql-plain" title="MySQL"></i>
-                        <i class="devicon-docker-plain" title="Docker"></i>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephover/SistemaVotacion" target="_blank">Repositorio</a>
+            <!-- ===== WINDOW: SKILLS ===== -->
+            <section class="window" id="win-skills" data-win="skills">
+                <div class="win-titlebar">
+                    <span class="win-dots"><i data-act="close"></i><i data-act="min"></i><i data-act="max"></i></span>
+                    <span class="win-title">skills.conf — paquetes instalados</span>
+                    <span class="win-spacer"></span>
+                </div>
+                <div class="win-body">
+                    <p class="eyebrow">~/portfolio/skills.conf</p>
+                    <h2>Habilidades Técnicas</h2>
+                    <div class="skills-container">
+                        <div class="skill-card">
+                            <h3>🎨 Frontend</h3>
+                            <ul>
+                                <li><i class="devicon-html5-plain"></i> HTML5 &amp; CSS3</li>
+                                <li><i class="devicon-javascript-plain"></i> JavaScript (ES6+)</li>
+                                <li><i class="devicon-react-original"></i> React.js</li>
+                                <li><i class="devicon-bootstrap-plain"></i> Responsive Design</li>
+                                <li><i class="devicon-tailwindcss-plain"></i> Tailwind CSS</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>⚙️ Backend &amp; Languages</h3>
+                            <ul>
+                                <li><i class="devicon-nodejs-plain"></i> Node.js &amp; Express</li>
+                                <li><i class="devicon-python-plain"></i> Python</li>
+                                <li><i class="devicon-java-plain"></i> Java</li>
+                                <li><i class="devicon-mysql-plain"></i> SQL &amp; NoSQL</li>
+                                <li><i class="devicon-express-original"></i> REST APIs</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>🗄️ Bases de Datos &amp; DevOps</h3>
+                            <ul>
+                                <li><i class="devicon-mysql-plain"></i> MySQL &amp; PostgreSQL</li>
+                                <li><i class="devicon-mongodb-plain"></i> MongoDB</li>
+                                <li><i class="devicon-git-plain"></i> Git &amp; GitHub</li>
+                                <li><i class="devicon-docker-plain"></i> Docker (Básico)</li>
+                                <li><i class="devicon-linux-plain"></i> Linux</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <h3>🛠️ Herramientas &amp; Metodologías</h3>
+                            <ul>
+                                <li><i class="devicon-jira-plain"></i> Agile/Scrum</li>
+                                <li><i class="devicon-vscode-plain"></i> VS Code</li>
+                                <li><i class="devicon-postman-plain"></i> Postman</li>
+                                <li><i class="devicon-figma-plain"></i> Figma (Básico)</li>
+                                <li><i class="devicon-jira-plain"></i> Jira/Trello</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <h3><i class="devicon-github-original"></i> Carrito de Compras Real-Time</h3>
-                    <p>Carrito de compras en tiempo real con sincronización de datos entre múltiples clientes usando Socket.IO. Backend robusto con Express.js y PostgreSQL, frontend responsive con JavaScript vanilla y diseño moderno.</p>
-                    <div class="project-tags">
-                        <i class="devicon-nodejs-plain" title="Node.js"></i>
-                        <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
-                        <i class="devicon-javascript-plain" title="JavaScript"></i>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephover/Sistema-Carrito" target="_blank">Repositorio</a>
+            <!-- ===== WINDOW: PROJECTS ===== -->
+            <section class="window" id="win-projects" data-win="projects">
+                <div class="win-titlebar">
+                    <span class="win-dots"><i data-act="close"></i><i data-act="min"></i><i data-act="max"></i></span>
+                    <span class="win-title">projects/ — gestor de archivos</span>
+                    <span class="win-spacer"></span>
+                </div>
+                <div class="win-body">
+                    <p class="eyebrow">~/portfolio/projects/</p>
+                    <h2>Proyectos Destacados</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-content">
+                                <h3><i class="devicon-github-original"></i> Product-Admin</h3>
+                                <p>Sistema integral de gestión de inventario de productos. Backend robusto desarrollado con Spring Boot, frontend moderno con Angular, base de datos PostgreSQL. Incluye gestión de productos, inventario, reportes y documentación API con Postman.</p>
+                                <div class="project-tags">
+                                    <i class="devicon-spring-plain" title="Spring Boot"></i>
+                                    <i class="devicon-angular-plain" title="Angular"></i>
+                                    <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Josephover/product-admin" target="_blank" rel="noopener">Repositorio</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-content">
+                                <h3><i class="devicon-github-original"></i> Password Generator</h3>
+                                <p>Generador de contraseñas moderno y seguro con React y Vite. Crea contraseñas fuertes y aleatorias con opciones personalizables. Incluye indicador de fortaleza en tiempo real, historial de últimas 10 contraseñas, y 100% privado - todo se procesa localmente sin transmitir datos.</p>
+                                <div class="project-tags">
+                                    <i class="devicon-react-original" title="React"></i>
+                                    <i class="devicon-vitejs-original" title="Vite"></i>
+                                    <i class="devicon-tailwindcss-plain" title="Tailwind CSS"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Josephover/Password-Manager" target="_blank" rel="noopener">Repositorio</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-content">
+                                <h3><i class="devicon-github-original"></i> Sistema de Votación Electoral</h3>
+                                <p>Plataforma de votación con módulo admin para generar reportes PDF (votantes, abstenciones, resultados) y módulo votante con acceso por cédula. Responsive y funcional en todas las plataformas. Implementado en el instituto para elecciones del consejo estudiantil.</p>
+                                <div class="project-tags">
+                                    <i class="devicon-php-plain" title="PHP"></i>
+                                    <i class="devicon-mysql-plain" title="MySQL"></i>
+                                    <i class="devicon-docker-plain" title="Docker"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Josephover/SistemaVotacion" target="_blank" rel="noopener">Repositorio</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-content">
+                                <h3><i class="devicon-github-original"></i> Carrito de Compras Real-Time</h3>
+                                <p>Carrito de compras en tiempo real con sincronización de datos entre múltiples clientes usando Socket.IO. Backend robusto con Express.js y PostgreSQL, frontend responsive con JavaScript vanilla y diseño moderno.</p>
+                                <div class="project-tags">
+                                    <i class="devicon-nodejs-plain" title="Node.js"></i>
+                                    <i class="devicon-postgresql-plain" title="PostgreSQL"></i>
+                                    <i class="devicon-javascript-plain" title="JavaScript"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Josephover/Sistema-Carrito" target="_blank" rel="noopener">Repositorio</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-content">
+                                <h3><i class="devicon-github-original"></i> Sistema de Gestión Docente (Colaborador)</h3>
+                                <p>Gestión académica con planificación de clases, evaluaciones y control de acceso por roles (profesores, coordinadores, administradores).</p>
+                                <div class="project-tags">
+                                    <i class="devicon-php-plain" title="PHP"></i>
+                                    <i class="devicon-mysql-plain" title="MySQL"></i>
+                                    <i class="devicon-docker-plain" title="Docker"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Carlos270512/sistema-gestionv2" target="_blank" rel="noopener">Repositorio</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-content">
+                                <h3><i class="devicon-github-original"></i> Sistema de Reserva</h3>
+                                <p>Sistema de reservas desarrollado en Kotlin puro con base de datos SQLite. Containerizado con Docker para fácil despliegue y sincronización en la nube con Firebase para acceso en tiempo real desde cualquier dispositivo.</p>
+                                <div class="project-tags">
+                                    <i class="devicon-kotlin-plain" title="Kotlin"></i>
+                                    <i class="devicon-sqlite-plain" title="SQLite"></i>
+                                    <i class="devicon-docker-plain" title="Docker"></i>
+                                    <i class="devicon-firebase-plain" title="Firebase"></i>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/Josephover/reserva" target="_blank" rel="noopener">Repositorio</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <h3><i class="devicon-github-original"></i> Sistema de Gestión Docente (Colaborador)</h3>
-                    <p>Gestión académica con planificación de clases, evaluaciones y control de acceso por roles (profesores, coordinadores, administradores).</p>
-                    <div class="project-tags">
-                        <i class="devicon-php-plain" title="PHP"></i>
-                        <i class="devicon-mysql-plain" title="MySQL"></i>
-                        <i class="devicon-docker-plain" title="Docker"></i>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Carlos270512/sistema-gestionv2" target="_blank">Repositorio</a>
+            <!-- ===== WINDOW: CONTACT ===== -->
+            <section class="window" id="win-contact" data-win="contact">
+                <div class="win-titlebar">
+                    <span class="win-dots"><i data-act="close"></i><i data-act="min"></i><i data-act="max"></i></span>
+                    <span class="win-title">contact.sh — enviar mensaje</span>
+                    <span class="win-spacer"></span>
+                </div>
+                <div class="win-body">
+                    <p class="eyebrow">~/portfolio/contact.sh</p>
+                    <div class="contact-content">
+                        <h2>Contacto</h2>
+                        <p>¿Interesado en trabajar juntos? No dudes en contactarme a través de cualquiera de estos canales.</p>
+                        <p class="contact-email">michelcruzati@gmail.com</p>
+
+                        <div class="social-links">
+                            <a href="https://github.com/Josephover" target="_blank" rel="noopener" title="GitHub">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 6.003 0c2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.236 1.911 1.236 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12Z"/></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/joseph-sánchez-b83211188/" target="_blank" rel="noopener" title="LinkedIn">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.814 0-9.752h3.554v1.381c.43-.665 1.199-1.61 2.919-1.61 2.135 0 3.74 1.395 3.74 4.393v5.588ZM5.337 9.433c-1.144 0-1.915-.758-1.915-1.708 0-.951.77-1.708 1.96-1.708 1.188 0 1.915.757 1.937 1.708 0 .95-.749 1.708-1.982 1.708Zm1.582 10.019H3.74V9.681h3.179v9.771ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z"/></svg>
+                            </a>
+                            <a href="mailto:michelcruzati@gmail.com" title="Email">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="project-card">
-                <div class="project-content">
-                    <h3><i class="devicon-github-original"></i> Sistema de Reserva</h3>
-                    <p>Sistema de reservas desarrollado en Kotlin puro con base de datos SQLite. Containerizado con Docker para fácil despliegue y sincronización en la nube con Firebase para acceso en tiempo real desde cualquier dispositivo.</p>
-                    <div class="project-tags">
-                        <i class="devicon-kotlin-plain" title="Kotlin"></i>
-                        <i class="devicon-sqlite-plain" title="SQLite"></i>
-                        <i class="devicon-docker-plain" title="Docker"></i>
-                        <i class="devicon-firebase-plain" title="Firebase"></i>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Josephover/reserva" target="_blank">Repositorio</a>
+            <!-- ===== WINDOW: TERMINAL ===== -->
+            <section class="window" id="win-terminal" data-win="terminal">
+                <div class="win-titlebar">
+                    <span class="win-dots"><i data-act="close"></i><i data-act="min"></i><i data-act="max"></i></span>
+                    <span class="win-title">term@jas-os: ~</span>
+                    <span class="win-spacer"></span>
+                </div>
+                <div class="win-body win-body-term">
+                    <div class="term-output" id="term-output"></div>
+                    <div class="term-inputline">
+                        <span class="term-prompt">guest@jas-os:~$</span>
+                        <input type="text" id="term-input" class="term-input" autocomplete="off" spellcheck="false" aria-label="Terminal input">
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section id="contact">
-        <h2>Contacto</h2>
-        <div class="contact-content">
-            <p>¿Interesado en trabajar juntos? No dudes en contactarme a través de cualquiera de estos canales.</p>
-            <p style="font-size: 1.2rem; color: var(--accent-color);">michelcruzati@gmail.com</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/Josephover" target="_blank" title="GitHub">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/joseph-sánchez-b83211188/" target="_blank" title="LinkedIn">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.814 0-9.752h3.554v1.381c.43-.665 1.199-1.61 2.919-1.61 2.135 0 3.74 1.395 3.74 4.393v5.588zM5.337 9.433c-1.144 0-1.915-.758-1.915-1.708 0-.951.77-1.708 1.96-1.708 1.188 0 1.915.757 1.937 1.708 0 .95-.749 1.708-1.982 1.708zm1.582 10.019H3.74V9.681h3.179v9.771zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
-                <a href="mailto:michelcruzati@gmail.com" title="Email">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                </a>
-            </div>
-        </div>
-    </section>
+        </main>
 
-    <footer>
-        <p>&copy; 2026 Joseph André Sánchez. Todos los derechos reservados. | Desarrollado con ❤️</p>
-    </footer>
+        <!-- ============ DOCK / TASKBAR ============ -->
+        <footer class="dock" id="dock" aria-label="Barra de tareas">
+            <button class="dock-item" data-open="about" title="about.md"><span class="d-icon-glyph">📄</span></button>
+            <button class="dock-item" data-open="experience" title="experience.log"><span class="d-icon-glyph">📜</span></button>
+            <button class="dock-item" data-open="skills" title="skills.conf"><span class="d-icon-glyph">⚙️</span></button>
+            <button class="dock-item" data-open="projects" title="projects/"><span class="d-icon-glyph">🗂️</span></button>
+            <button class="dock-item" data-open="contact" title="contact.sh"><span class="d-icon-glyph">✉️</span></button>
+            <button class="dock-item" data-open="terminal" title="terminal"><span class="d-icon-glyph">▶_</span></button>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
